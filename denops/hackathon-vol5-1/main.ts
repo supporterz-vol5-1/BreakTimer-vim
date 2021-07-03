@@ -102,19 +102,19 @@ export async function main(denops: Denops): Promise<void> {
   await execute(
     denops,
     `
-    command! Hackathon5_1FetchToken call denops#notify("${denops.name}", "getToken")
-    command! Hackathon5_1StartWriting call denops#notify("${denops.name}", "startWriting")
-    command! Hackathon5_1StopWriting call denops#notify("${denops.name}", "stopWriting")
+    command! HackathonFiveFetchToken call denops#notify("${denops.name}", "getToken", [])
+    command! HackathonFiveStartWriting call denops#notify("${denops.name}", "startWriting", [])
+    command! HackathonFiveStopWriting call denops#notify("${denops.name}", "stopWriting", [])
     `,
   );
   await execute(
     denops,
     `augroup hackathon5_1
        autocmd!
-       autocmd BufWinEnter,WinEnter,BufEnter * Hackathon5_1StartWriting
-       autocmd BufWritePost * Hackathon5_1StopWriting
+       autocmd BufWinEnter,WinEnter,BufEnter * HackathonFiveStartWriting
+       autocmd BufWritePost * HackathonFiveStopWriting
        if exists("##QuitPre")
-         autocmd Quitpre * Hackathon5_1StopWriting
+         autocmd QuitPre * HackathonFiveStopWriting
        endif
     augroup END
     `,
