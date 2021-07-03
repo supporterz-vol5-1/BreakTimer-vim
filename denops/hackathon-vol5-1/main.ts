@@ -1,6 +1,6 @@
-import { Denops } from "https://deno.land/x/denops_std@v1.0.0-alpha.0/mod.ts";
-import { execute } from "https://deno.land/x/denops_std@v1.0.0-alpha.0/helper/mod.ts";
-import * as vars from "https://deno.land/x/denops_std@v1.0.0-alpha.0/variable/mod.ts";
+import { Denops } from "https://deno.land/x/denops_std@v1.0.0-alpha.3/mod.ts";
+import { execute } from "https://deno.land/x/denops_std@v1.0.0-alpha.3/helper/mod.ts";
+import * as vars from "https://deno.land/x/denops_std@v1.0.0-alpha.3/variable/mod.ts";
 
 const baseUrl = "https://agile-tundra-65071.herokuapp.com/api/";
 
