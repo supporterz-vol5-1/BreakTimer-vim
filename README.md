@@ -18,3 +18,24 @@ use your favorite plugin manager
 
 ## Usage
 
+- register user
+    ```vim
+    :HackathonFiveFetchToken
+    ```
+    after run the command. show token in vim console, run `:messages`.
+    the token is show only once, **Dont forget memorize the token!**
+
+- register start writing by manual
+    ```vim
+    :HackathonFiveStartWriting
+    ```
+    need `g:hackathon5_1_username` or `hachathon5_1_username` in environ variable, and `g:hackathon5_1_token` or `hackathon5_1_username` in environ variable. 
+    run command then, register the start time.
+
+- register stop writing by manual
+    ```vim
+    :HackathonFiveStopWriting
+    ```
+    need `g:hackathon5_1_username` or `hachathon5_1_username` in environ variable, and `g:hackathon5_1_token` or `hackathon5_1_username` in environ variable. 
+    run command then, register the stop time.
+
