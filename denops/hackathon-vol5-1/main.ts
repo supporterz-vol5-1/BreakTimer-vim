@@ -9,7 +9,7 @@ async function fetchToken(userName: string) {
     method: "GET",
   });
   if (r.status != 200) {
-    throw new Error(`[breakTimer] The response status code is ${r.status}.`);
+    throw new Error(`The response status code is ${r.status}.`);
   }
   const json = r.json();
   const data = await json;
@@ -26,7 +26,7 @@ async function postAPI(url: string, body: Record<string, unknown>) {
   });
 
   if (r.status !== 200) {
-    throw new Error(`[breakTimer] The response status code is ${r.status}.`);
+    throw new Error(`The response status code is ${r.status}.`);
   }
 }
 
