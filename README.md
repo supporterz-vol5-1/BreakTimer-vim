@@ -5,6 +5,7 @@
 
 ### Dependency
 - deno
+- denops.vim
 
 ### Install by plugin manager
 
@@ -13,29 +14,29 @@ use your favorite plugin manager
 - dein.vim
  ```vim
  call dein#add("vim-denops/denops.vim")
- call dein#add("hackathon-vol5-1/Hackathon-vol5-1-vim")
+ call dein#add("hackathon-vol5-1/breakTimer-vim")
  ```
 
 ## Usage
 
 - register user
     ```vim
-    :HackathonFiveFetchToken
+    :BreakTimerFetchToken
     ```
     after run the command. show token in vim console, run `:messages`.
     the token is show only once, **Dont forget memorize the token!**
 
 - register start writing by manual
     ```vim
-    :HackathonFiveStartWriting
+    :BreakTimerStartWriting
     ```
-    need `g:hackathon5_1_username` or `hachathon5_1_username` in environ variable, and `g:hackathon5_1_token` or `hackathon5_1_username` in environ variable. 
+    need `g:break_timer_username` or `break_timer_username` in environ variable, and `g:break_timer_token` or `break_timer_username` in environ variable. 
     run command then, register the start time.
 
 - register stop writing by manual
     ```vim
-    :HackathonFiveStopWriting
+    :BreakTimerStopWriting
     ```
-    need `g:hackathon5_1_username` or `hachathon5_1_username` in environ variable, and `g:hackathon5_1_token` or `hackathon5_1_username` in environ variable. 
+    need `g:break_timer_username` or `break_timer_username` in environ variable, and `g:break_timer_token` or `break_timer_username` in environ variable. 
     run command then, register the stop time.
 

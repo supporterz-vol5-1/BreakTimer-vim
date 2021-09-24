@@ -8,8 +8,8 @@ async function fetchToken(userName: string) {
   const r = await fetch(baseUrl + userName, {
     method: "GET",
   });
-  if (r.status !== 200) {
-    throw new Error(`[hachathon5_1] The response status code is ${r.status}.`);
+  if (r.status != 200) {
+    throw new Error(`[breakTimer] The response status code is ${r.status}.`);
   }
   const json = r.json();
   const data = await json;
@@ -26,7 +26,7 @@ async function postAPI(url: string, body: Record<string, unknown>) {
   });
 
   if (r.status !== 200) {
-    throw new Error(`[hachathon5_1] The response status code is ${r.status}.`);
+    throw new Error(`[breakTimer] The response status code is ${r.status}.`);
   }
 }
 
@@ -47,12 +47,12 @@ async function stop(userName: string, token: string, filetype: string) {
 async function getUserName(denops: Denops): Promise<string> {
   const userName = await vars.g.get(
     denops,
-    "hackathon5_1_username",
-    Deno.env.get("hackathon5_1_username"),
+    "break_timer_username",
+    Deno.env.get("break_timer_username"),
   );
   if (userName == null) {
     throw new Error(
-      "You must set hackathon5_1_username as vim global variable or env variable.",
+      "You must set break_timer_username as vim global variable or env variable.",
     );
   }
   return userName;
@@ -60,12 +60,12 @@ async function getUserName(denops: Denops): Promise<string> {
 async function getToken(denops: Denops): Promise<string> {
   const token = await vars.g.get(
     denops,
-    "hackathon5_1_token",
-    Deno.env.get("hackathon5_1_token"),
+    "break_timer_token",
+    Deno.env.get("break_timer_token"),
   );
   if (token == null) {
     throw new Error(
-      "You must set hackathon5_1_token as vim global variable or env variable.",
+      "You must set break_timer_token as vim global variable or env variable.",
     );
   }
   return token;
@@ -74,39 +74,54 @@ async function getToken(denops: Denops): Promise<string> {
 export async function main(denops: Denops): Promise<void> {
   denops.dispatcher = {
     async getToken(args: unknown): Promise<void> {
-      const userName = await getUserName(denops);
-      const token = await fetchToken(userName);
-      console.log(`Your token is &{token}, memorize this.`);
+      try {
+        const userName = await getUserName(denops);
+        const token = await fetchToken(userName);
+        console.log(`Your token is &{token}, memorize this.`);
+      } catch (error) {
+        console.error(`[breakTimer] ${error}`);
+        return await Promise.resolve();
+      }
     },
     async startWriting(args: unknown): Promise<void> {
-      const userName = await getUserName(denops);
-      const token = await getToken(denops);
-      const filetype = await denops.eval("&filetype") as string;
-      await start(userName, token, filetype);
+      try {
+        const userName = await getUserName(denops);
+        const token = await getToken(denops);
+        const filetype = await denops.eval("&filetype") as string;
+        await start(userName, token, filetype);
+      } catch (error) {
+        console.error(`[breakTimer] ${error}`);
+        return await Promise.resolve();
+      }
     },
     async stopWriting(args: unknown): Promise<void> {
-      const userName = await getUserName(denops);
-      const token = await getToken(denops);
-      const filetype = await denops.eval("&filetype") as string;
-      await stop(userName, token, filetype);
+      try {
+        const userName = await getUserName(denops);
+        const token = await getToken(denops);
+        const filetype = await denops.eval("&filetype") as string;
+        await stop(userName, token, filetype);
+      } catch (error) {
+        console.error(`[breakTimer] ${error}`);
+        return await Promise.resolve();
+      }
     },
   };
   await execute(
     denops,
     `
-    command! HackathonFiveFetchToken call denops#notify("${denops.name}", "getToken", [])
-    command! HackathonFiveStartWriting call denops#notify("${denops.name}", "startWriting", [])
-    command! HackathonFiveStopWriting call denops#notify("${denops.name}", "stopWriting", [])
+    command! BreakTimerFetchToken call denops#notify("${denops.name}", "getToken", [])
+    command! BreakTimerStartWriting call denops#notify("${denops.name}", "startWriting", [])
+    command! BreakTimerStopWriting call denops#notify("${denops.name}", "stopWriting", [])
     `,
   );
   await execute(
     denops,
-    `augroup hackathon5_1
+    `augroup break_timer
        autocmd!
-       autocmd BufWinEnter,WinEnter,BufEnter * HackathonFiveStartWriting
-       autocmd BufWritePost * HackathonFiveStopWriting
+       autocmd BufWinEnter,WinEnter,BufEnter * BreakTimerStartWriting
+       autocmd BufWritePost * BreakTimerStopWriting
        if exists("##QuitPre")
-         autocmd QuitPre * HackathonFiveStopWriting
+         autocmd QuitPre * BreakTimerStopWriting
        endif
     augroup END
     `,
