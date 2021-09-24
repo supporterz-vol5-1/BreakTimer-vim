@@ -9,7 +9,6 @@ async function fetchToken(userName: string) {
     method: "GET",
   });
   if (r.status !== 200) {
-    console.error(`[hachathon5_1] The response status code is ${r.status}.`);
     throw new Error(`[hachathon5_1] The response status code is ${r.status}.`);
   }
   const json = r.json();
@@ -27,7 +26,6 @@ async function postAPI(url: string, body: Record<string, unknown>) {
   });
 
   if (r.status !== 200) {
-    console.error(`[hachathon5_1] The response status code is ${r.status}.`);
     throw new Error(`[hachathon5_1] The response status code is ${r.status}.`);
   }
 }
@@ -53,9 +51,6 @@ async function getUserName(denops: Denops): Promise<string> {
     Deno.env.get("hackathon5_1_username"),
   );
   if (userName == null) {
-    console.error(
-      "You must set hackathon5_1_username as vim global variable or env variable.",
-    );
     throw new Error(
       "You must set hackathon5_1_username as vim global variable or env variable.",
     );
@@ -69,9 +64,6 @@ async function getToken(denops: Denops): Promise<string> {
     Deno.env.get("hackathon5_1_token"),
   );
   if (token == null) {
-    console.error(
-      "You must set hackathon5_1_token as vim global variable or env variable.",
-    );
     throw new Error(
       "You must set hackathon5_1_token as vim global variable or env variable.",
     );
