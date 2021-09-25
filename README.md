@@ -1,5 +1,5 @@
-# This is a Vaporware yet
-
+<!-- # This is a Vaporware yet -->
+# BreakTimer-vim
 
 ## Installation
 
@@ -7,15 +7,15 @@
 - deno
 - denops.vim
 
-### Install by plugin manager
+### Install
 
-use your favorite plugin manager
+Use your favorite plugin manager
 
 - dein.vim
- ```vim
- call dein#add("vim-denops/denops.vim")
- call dein#add("hackathon-vol5-1/BreakTimer-vim")
- ```
+    ```vim
+    call dein#add("vim-denops/denops.vim")
+    call dein#add("hackathon-vol5-1/BreakTimer-vim")
+    ```
 
 ## Usage
 
@@ -23,20 +23,25 @@ use your favorite plugin manager
     ```vim
     :BreakTimerFetchToken
     ```
-    after run the command. show token in vim console, run `:messages`.
-    the token is show only once, **Dont forget memorize the token!**
+    After run the command. show token in vim console, run `:messages`.
+    The token is show only once, **Dont forget to memorize the token!**
 
-- register start writing by manual
-    ```vim
-    :BreakTimerStartWriting
-    ```
-    need `g:break_timer_username` or `break_timer_username` in environ variable, and `g:break_timer_token` or `break_timer_username` in environ variable. 
-    run command then, register the start time.
+- register start/stop writing
+    By default, start/stop writing is automatically registered.
+    If you want to disable automatically registering, use `g:break_timer_disable_auto_register = 1`.
+    And run below commands for register manually.
 
-- register stop writing by manual
-    ```vim
-    :BreakTimerStopWriting
-    ```
-    need `g:break_timer_username` or `break_timer_username` in environ variable, and `g:break_timer_token` or `break_timer_username` in environ variable. 
-    run command then, register the stop time.
+    - register start writing by manual
+        ```vim
+        :BreakTimerStartWriting
+        ```
+        Need `g:break_timer_username` or `BREAK_TIMER_USERNAME` in environment variable, and `g:break_timer_token` or `BREAK_TIMER_TOKEN` in environment variable. 
+        Run command then, register the start time.
+
+    - register stop writing by manual
+        ```vim
+        :BreakTimerStopWriting
+        ```
+        Need `g:break_timer_username` or `BREAK_TIMER_USERNAME` in environment variable, and `g:break_timer_token` or `BREAK_TIMER_TOKEN` in environment variable. 
+        Run command then, register the stop time.
 

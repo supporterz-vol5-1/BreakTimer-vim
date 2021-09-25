@@ -1,4 +1,4 @@
-import { Denops, execute, vars } from "./deps.ts"
+import { Denops, ensureNumber, execute, vars } from "./deps.ts";
 import { fetchToken, start, stop } from "./breaktimer.ts";
 
 async function getUserName(denops: Denops): Promise<string> {
@@ -71,9 +71,16 @@ export async function main(denops: Denops): Promise<void> {
     command! BreakTimerStopWriting call denops#notify("${denops.name}", "stopWriting", [])
     `,
   );
-  await execute(
+  const disableAutoRegist = vars.g.get(
     denops,
-    `augroup break_timer
+    "break_timer_disable_auto_register",
+    0,
+  );
+  ensureNumber(disableAutoRegist);
+  if (disableAutoRegist == 0) {
+    await execute(
+      denops,
+      `augroup break_timer
        autocmd!
        autocmd BufWinEnter,WinEnter,BufEnter * BreakTimerStartWriting
        autocmd BufWritePost * BreakTimerStopWriting
@@ -82,5 +89,6 @@ export async function main(denops: Denops): Promise<void> {
        endif
     augroup END
     `,
-  );
+    );
+  }
 }
