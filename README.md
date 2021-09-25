@@ -1,3 +1,4 @@
+[![deno-test](https://github.com/supporterz-vol5-1/BreakTimer-vim/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/supporterz-vol5-1/BreakTimer-vim/actions/workflows/ci.yml)
 <!-- # This is a Vaporware yet -->
 # BreakTimer-vim
 
