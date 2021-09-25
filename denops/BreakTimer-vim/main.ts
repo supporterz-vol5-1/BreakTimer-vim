@@ -1,6 +1,4 @@
-import { Denops } from "https://deno.land/x/denops_std@v2.0.0/mod.ts";
-import { execute } from "https://deno.land/x/denops_std@v2.0.0/helper/mod.ts";
-import * as vars from "https://deno.land/x/denops_std@v2.0.0/variable/mod.ts";
+import { Denops, execute, vars } from "./deps.ts"
 import { fetchToken, start, stop } from "./breaktimer.ts";
 
 async function getUserName(denops: Denops): Promise<string> {
