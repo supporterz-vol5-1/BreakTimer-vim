@@ -14,7 +14,7 @@ use your favorite plugin manager
 - dein.vim
  ```vim
  call dein#add("vim-denops/denops.vim")
- call dein#add("hackathon-vol5-1/breakTimer-vim")
+ call dein#add("hackathon-vol5-1/BreakTimer-vim")
  ```
 
 ## Usage

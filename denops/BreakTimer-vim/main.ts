@@ -1,6 +1,6 @@
-import { Denops } from "https://deno.land/x/denops_std@v1.0.0-alpha.3/mod.ts";
-import { execute } from "https://deno.land/x/denops_std@v1.0.0-alpha.3/helper/mod.ts";
-import * as vars from "https://deno.land/x/denops_std@v1.0.0-alpha.3/variable/mod.ts";
+import { Denops } from "https://deno.land/x/denops_std@v2.0.0/mod.ts";
+import { execute } from "https://deno.land/x/denops_std@v2.0.0/helper/mod.ts";
+import * as vars from "https://deno.land/x/denops_std@v2.0.0/variable/mod.ts";
 
 const baseUrl = "https://agile-tundra-65071.herokuapp.com/api/";
 
@@ -79,7 +79,7 @@ export async function main(denops: Denops): Promise<void> {
         const token = await fetchToken(userName);
         console.log(`Your token is &{token}, memorize this.`);
       } catch (error) {
-        console.error(`[breakTimer] ${error}`);
+        console.error(`[BreakTimer] ${error}`);
         return await Promise.resolve();
       }
     },
@@ -90,7 +90,7 @@ export async function main(denops: Denops): Promise<void> {
         const filetype = await denops.eval("&filetype") as string;
         await start(userName, token, filetype);
       } catch (error) {
-        console.error(`[breakTimer] ${error}`);
+        console.error(`[BreakTimer] ${error}`);
         return await Promise.resolve();
       }
     },
@@ -101,7 +101,7 @@ export async function main(denops: Denops): Promise<void> {
         const filetype = await denops.eval("&filetype") as string;
         await stop(userName, token, filetype);
       } catch (error) {
-        console.error(`[breakTimer] ${error}`);
+        console.error(`[BreakTimer] ${error}`);
         return await Promise.resolve();
       }
     },
