@@ -4,7 +4,7 @@ import {
   assertThrowsAsync,
 } from "./dev_deps.ts";
 
-import { fetchToken, postAPI } from "../denops/BreakTimer-vim/main.ts";
+import { fetchToken, postAPI } from "../denops/BreakTimer-vim/breaktimer.ts";
 
 const expectObject = {
   "this_is": "test",
