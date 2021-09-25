@@ -4,7 +4,7 @@ import * as vars from "https://deno.land/x/denops_std@v2.0.0/variable/mod.ts";
 
 const baseUrl = "https://agile-tundra-65071.herokuapp.com/api/";
 
-async function fetchToken(userName: string) {
+export async function fetchToken(userName: string) {
   const r = await fetch(baseUrl + userName, {
     method: "GET",
   });
@@ -16,7 +16,7 @@ async function fetchToken(userName: string) {
   return data;
 }
 
-async function postAPI(url: string, body: Record<string, unknown>) {
+export async function postAPI(url: string, body: Record<string, unknown>) {
   const r = await fetch(url, {
     method: "POST",
     headers: {
@@ -25,7 +25,7 @@ async function postAPI(url: string, body: Record<string, unknown>) {
     body: JSON.stringify(body),
   });
 
-  if (r.status !== 200) {
+  if (r.status != 200) {
     throw new Error(`The response status code is ${r.status}.`);
   }
 }
