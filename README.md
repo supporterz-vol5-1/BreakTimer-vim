@@ -1,3 +1,4 @@
+[![deno-test](https://github.com/supporterz-vol5-1/BreakTimer-vim/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/supporterz-vol5-1/BreakTimer-vim/actions/workflows/ci.yml)
 <!-- # This is a Vaporware yet -->
 # BreakTimer-vim
 
@@ -19,14 +20,14 @@ Use your favorite plugin manager
 
 ## Usage
 
-- register user
+1. register user
     ```vim
     :BreakTimerFetchToken
     ```
     After run the command. show token in vim console, run `:messages`.
     The token is show only once, **Dont forget to memorize the token!**
 
-- register start/stop writing
+2. register start/stop writing
     By default, start/stop writing is automatically registered.
     If you want to disable automatically registering, use `g:break_timer_disable_auto_register = 1`.
     And run below commands for register manually.
