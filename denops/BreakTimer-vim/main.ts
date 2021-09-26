@@ -82,11 +82,8 @@ export async function main(denops: Denops): Promise<void> {
       denops,
       `augroup break_timer
        autocmd!
-       autocmd BufWinEnter,WinEnter,BufEnter * BreakTimerStartWriting
-       autocmd BufWritePost * BreakTimerStopWriting
-       if exists("##QuitPre")
-         autocmd QuitPre * BreakTimerStopWriting
-       endif
+       autocmd BufEnter * BreakTimerStartWriting
+       autocmd BufLeave * BreakTimerStopWriting
     augroup END
     `,
     );
